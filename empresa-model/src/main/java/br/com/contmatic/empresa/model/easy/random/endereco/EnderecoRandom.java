@@ -18,13 +18,13 @@ public class EnderecoRandom implements Randomizer<Endereco> {
 
         parametroEndereco.ignoreRandomizationErrors(true);
         parametroEndereco.overrideDefaultInitialization(false);
-        parametroEndereco.randomize(named("numeroResidencia"),new IntegerRangeRandomizer(1, 1500));
+        parametroEndereco.randomize(named("numeroResidencia"), new IntegerRangeRandomizer(1, 1500));
         parametroEndereco.randomize(named("bairro").and(ofType(String.class).and(inClass(Endereco.class))), new BairroRandom());
         parametroEndereco.randomize(named("cep").and(ofType(String.class).and(inClass(Endereco.class))), new CepRandom());
 
         EasyRandom easyRandom = new EasyRandom(parametroEndereco);
-        Endereco endereco = easyRandom.nextObject(Endereco.class);
-        return endereco;
+
+        return easyRandom.nextObject(Endereco.class);
     }
 
     @Override

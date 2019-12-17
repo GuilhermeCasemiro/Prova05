@@ -4,7 +4,6 @@ import java.util.Set;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -25,43 +24,38 @@ import br.com.contmatic.empresa.model.groups.Update;
 public class Empresa {
 
     /** The cnpj. */
-    @NotBlank(message = "CNPJ obrigatório.", groups = {Create.class, Delete.class, Find.class, Update.class})
-    @CNPJ(message = "O CNPJ deve ser válido.", groups = {Create.class, Delete.class, Find.class, Update.class})
-    @Size(min = 14, max = 14, message = "CNPJ deve conter exatamente 14 caracteres.", groups = {Create.class, Delete.class, Find.class, Update.class})
+    @NotBlank(message = "CNPJ obrigatório.", groups = { Create.class, Delete.class, Find.class, Update.class })
+    @CNPJ(message = "O CNPJ deve ser válido.", groups = { Create.class, Delete.class, Find.class, Update.class })
+    @Size(min = 14, max = 14, message = "CNPJ deve conter exatamente 14 caracteres.", groups = { Create.class, Delete.class, Find.class, Update.class })
     private String cnpj;
 
     /** The razao social. */
-    @NotBlank(message = "Razão Social é obrigatório.", groups = {Create.class, Delete.class, Find.class, Update.class})
-    @Size(min = 10, max = 30, message = "Razão social deve ter no minino 10 caracteres e no maixmo 30 caracteres.", groups = {Create.class, Delete.class, Find.class, Update.class})
-    @Pattern(regexp = "/[^a-zA-Z 0-9]+/", message = "Razão Social inválida.", groups = {Create.class, Delete.class, Find.class, Update.class})
+    @NotBlank(message = "Razão Social é obrigatório.", groups = { Create.class, Delete.class, Find.class, Update.class })
+    @Size(min = 10, max = 30, message = "Razão social deve ter no minino 10 caracteres e no maixmo 30 caracteres.", groups = { Create.class, Delete.class, Find.class, Update.class })
+    @Pattern(regexp = "/[^a-zA-Z 0-9]+/", message = "Razão Social inválida.", groups = { Create.class, Delete.class, Find.class, Update.class })
     private String razaoSocial;
 
     /** The nome fantasia. */
-    @NotBlank(message = "Nome fantasia é obrigatório.", groups = {Delete.class, Find.class, Update.class})
-    @Size(min = 10, max = 30, message = "Nome fantasia deve ter no minimo 10 caracteres e no maixmo 30 caracteres.", groups = {Delete.class, Find.class, Update.class})
-    @Pattern(regexp = "/[^a-zA-Z 0-9]+/", message = "Nome Fantasia inválido.", groups = {Delete.class, Find.class, Update.class})
+    @NotBlank(message = "Nome fantasia é obrigatório.", groups = { Delete.class, Find.class, Update.class })
+    @Size(min = 10, max = 30, message = "Nome fantasia deve ter no minimo 10 caracteres e no maixmo 30 caracteres.", groups = { Delete.class, Find.class, Update.class })
+    @Pattern(regexp = "/[^a-zA-Z 0-9]+/", message = "Nome Fantasia inválido.", groups = { Delete.class, Find.class, Update.class })
     private String nomeFantasia;
 
-    @NotNull
     @Size(min = 1, max = 1000, message = "A empresa deve conter pelo menos 1 funcionário e no maximo 1000.")
     @Valid
     private Set<Funcionario> funcionarios;
 
-    @NotNull
     @Size(min = 1, max = 100, message = "A empresa deve conter pelo menos 1 contato e no maximo 100.")
     @Valid
     private Set<Contato> contatos;
 
-    @NotNull
     @Size(min = 1, max = 100, message = "A empresa deve conter pelo menos 1 endereço e no maximo 100.")
     @Valid
     private Set<Endereco> enderecos;
 
-    @NotNull(message = "Empresa deve conter uma cidade.")
     @Valid
     private Cidade cidade;
 
-    @NotNull(message = "Empresa deve conter um estado.")
     @Valid
     private Estado estado;
 

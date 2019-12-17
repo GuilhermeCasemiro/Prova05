@@ -104,7 +104,7 @@ public enum DDD {
     @NotBlank(message = "DDD é obrigatório.", groups = { Delete.class, Update.class, Find.class })
     @Size(min = 2, max = 2, message = "DDD não pode ter menos ou mais de 2 caracteres.", groups = { Delete.class, Find.class, Update.class })
     @Pattern(regexp = "\\d", message = "DDD não pode conter letras e caracteres especiais.", groups = { Delete.class, Find.class, Update.class })
-    private String ddd;
+    private String dddEstado;
 
     /**
      * Instantiates a new ddd.
@@ -114,7 +114,7 @@ public enum DDD {
      */
     DDD(String uf, String ddd) {
         this.uf = uf;
-        this.ddd = ddd;
+        this.dddEstado = ddd;
     }
 
     /**
@@ -136,11 +136,11 @@ public enum DDD {
      * @return the ddd
      */
     public String getDDD() {
-        return this.ddd;
+        return this.dddEstado;
     }
 
     public void setDdd(String ddd) {
-        this.ddd = ddd;
+        this.dddEstado = ddd;
     }
 
 }

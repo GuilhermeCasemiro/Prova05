@@ -58,12 +58,12 @@ public class Funcionario {
 
     /** The endereco. */
     @Valid
-    @NotNull(message = "Endereço é obrigatório.")
+    @NotNull(message = "Não pode conter lista de enderecos nula.", groups = { Delete.class, Update.class, Find.class })
     private Set<Endereco> endereco;
 
     /** The contatos. */
     @Valid
-    @NotNull(message = "Não pode conter lista de contatos nula.")
+    @NotNull(message = "Não pode conter lista de contatos nula.", groups = { Delete.class, Update.class, Find.class })
     private Set<Contato> contatos;
 
     /** The salario. */
@@ -90,20 +90,14 @@ public class Funcionario {
         super();
     }
 
-    /**
-     * Instantiates a new funcionario.
-     *
-     * @param salario the salario
-     * @param comissao the comissao
-     * @param departamento the departamento
-     * @param cpf the cpf
-     */
-    public Funcionario(BigDecimal salario, BigDecimal comissao, String departamento, String cpf) {
+    public Funcionario(String nome, String email, String cpf, DateTime dataNascimento, String sexo, Set<Endereco> endereco) {
         super();
-        this.comissao = comissao;
-        this.salario = salario;
-        this.departamento = departamento;
+        this.nome = nome;
+        this.email = email;
         this.cpf = cpf;
+        this.dataNascimento = dataNascimento;
+        this.sexo = sexo;
+        this.endereco = endereco;
     }
 
     /**

@@ -6,6 +6,8 @@ import org.jeasy.random.api.Randomizer;
 
 public class CNPJRandom implements Randomizer<String> {
 
+    Random numeroAleatorio = new Random();
+
     public String geraCNPJ() {
 
         int digito1 = 0;
@@ -14,8 +16,6 @@ public class CNPJRandom implements Randomizer<String> {
         String nDigResult;
         String numerosContatenados;
         String numeroGerado;
-
-        Random numeroAleatorio = new Random();
 
         // numeros gerados
         int n1 = numeroAleatorio.nextInt(10);
@@ -62,8 +62,8 @@ public class CNPJRandom implements Randomizer<String> {
         }
 
         // Conctenando os numeros
-        numerosContatenados = String.valueOf(n1) + String.valueOf(n2) + String.valueOf(n3) + String.valueOf(n4) + String.valueOf(n5) + String.valueOf(n6) + String.valueOf(n7) +
-            String.valueOf(n8) + String.valueOf(n9) + String.valueOf(n10) + String.valueOf(n11) + String.valueOf(n12);
+        numerosContatenados = String.valueOf(n1) + String.valueOf(n2) + String.valueOf(n3) + String.valueOf(n4) + String.valueOf(n5) + String.valueOf(n6) + String.valueOf(n7) + String.valueOf(n8) +
+            String.valueOf(n9) + String.valueOf(n10) + String.valueOf(n11) + String.valueOf(n12);
 
         // Concatenando o primeiro resto com o segundo.
         nDigResult = String.valueOf(digito1) + String.valueOf(digito2);

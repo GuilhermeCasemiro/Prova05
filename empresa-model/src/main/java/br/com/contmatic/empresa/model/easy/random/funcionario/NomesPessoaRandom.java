@@ -1,13 +1,14 @@
 package br.com.contmatic.empresa.model.easy.random.funcionario;
 
-import java.util.Arrays;
+import static java.util.Arrays.asList;
+
 import java.util.List;
 import java.util.Random;
 
 import org.jeasy.random.api.Randomizer;
 
 public class NomesPessoaRandom implements Randomizer<String> {
-    List<String> nomes = Arrays.asList("Alice ", "Miguel", "Sophia", "Arthur", "Helena", " Bernardo,", "Valentina", " Heitor,", "Laura", "Davi", "Isabella", "Lorenzo", "Manuela", "Théo", "Júlia",
+    List<String> nomes = asList("Alice ", "Miguel", "Sophia", "Arthur", "Helena", " Bernardo,", "Valentina", " Heitor,", "Laura", "Davi", "Isabella", "Lorenzo", "Manuela", "Théo", "Júlia",
         "Pedro", "Heloísa", "Gabriel", "Luiza", "Enzo", "Maria Luiza", "Matheus", "Lorena", "Lucas", "Lívia ", "Benjamin", "Giovanna", "Nicolas", "Maria Eduarda", "Guilherme", "Beatriz", "Rafael",
         "Maria Clara", "Joaquim", "Cecília", "Samuel", "Eloá", "Enzo Gabriel", "Lara", "João Miguel", "Maria", "Júlia Henrique", "Isadora", "Gustavo", "Mariana", "Murilo", "Emanuelly",
         "Pedro Henrique", "Ana Júlia", "Pietro", "Ana Luiza", "Lucca", "Ana Clara", "Felipe", "Melissa", "João Pedro", "Yasmin", "Isaac", "Maria Alice", "Benício", "Isabelly", "Daniel", "Lavínia",

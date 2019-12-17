@@ -1,7 +1,5 @@
 package br.com.contmatic.empresa.model.easy.random.funcionario;
 
-import static br.com.contmatic.empresa.model.easy.random.endereco.EnderecoRandom.gerarEndereco;
-import static br.com.contmatic.empresa.model.easy.random.funcionario.ContatoRandom.gerarContato;
 import static org.jeasy.random.FieldPredicates.inClass;
 import static org.jeasy.random.FieldPredicates.named;
 import static org.jeasy.random.FieldPredicates.ofType;
@@ -20,12 +18,13 @@ import org.joda.time.DateTime;
 import br.com.contmatic.empresa.model.Contato;
 import br.com.contmatic.empresa.model.Endereco;
 import br.com.contmatic.empresa.model.Funcionario;
+import br.com.contmatic.empresa.model.easy.random.endereco.EnderecoRandom;
 
 public class FuncionarioRandom implements Randomizer<Funcionario> {
 
     public static Funcionario gerarFuncionario() {
         EasyRandomParameters parametroFuncionario = new EasyRandomParameters();
-        
+
         parametroFuncionario.ignoreRandomizationErrors(true);
         parametroFuncionario.overrideDefaultInitialization(false);
         parametroFuncionario.randomizationDepth(10);
@@ -45,25 +44,9 @@ public class FuncionarioRandom implements Randomizer<Funcionario> {
         return easyRandom.nextObject(Funcionario.class);
     }
 
-    static Randomizer<Contato> contatoRandomizer = new Randomizer<Contato>() {
+    static Randomizer<Contato> contatoRandomizer = ContatoRandom::gerarContato;
 
-        @Override
-        public Contato getRandomValue() {
-
-            return gerarContato();
-        }
-
-    };
-
-    static Randomizer<Endereco> enderecoRandomizer = new Randomizer<Endereco>() {
-
-        @Override
-        public Endereco getRandomValue() {
-
-            return gerarEndereco();
-        }
-
-    };
+    static Randomizer<Endereco> enderecoRandomizer = EnderecoRandom::gerarEndereco;
 
     @Override
     public Funcionario getRandomValue() {

@@ -25,6 +25,7 @@ import org.junit.Test;
 import com.google.code.beanmatchers.ValueGenerator;
 
 import br.com.contmatic.empresa.model.Funcionario;
+import br.com.contmatic.empresa.model.groups.Delete;
 import br.com.contmatic.empresa.model.groups.Find;
 import br.com.contmatic.empresa.model.groups.Update;
 import nl.jqno.equalsverifier.EqualsVerifier;
@@ -195,7 +196,14 @@ public class FuncionarioTest {
     public void nao_deve_ter_contato_nulo() {
 
         funcionario.setContatos(null);
-        assertFalse(isValid(funcionario, "Não pode conter lista de contatos nula."));
+        assertFalse(isValid(funcionario, "Não pode conter lista de contatos nula.", Delete.class, Update.class, Find.class));
+    }
+    
+    @Test
+    public void nao_deve_ter_endereco_nulo() {
+
+        funcionario.setEndereco(null);
+        assertFalse(isValid(funcionario, "Não pode conter lista de enderecos nula.", Delete.class, Update.class, Find.class));
     }
 
     /**

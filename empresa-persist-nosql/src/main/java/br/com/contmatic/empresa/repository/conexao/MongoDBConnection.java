@@ -33,14 +33,14 @@ public class MongoDBConnection {
         return mongoDBConnection;
     }
 
-    public CodecRegistry pojoCodecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(), fromProviders(PojoCodecProvider.builder().automatic(true).build()));
+    public static final CodecRegistry pojoCodecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(), fromProviders(PojoCodecProvider.builder().automatic(true).build()));
 
-    public MongoClientSettings settings = MongoClientSettings.builder().codecRegistry(pojoCodecRegistry).build();
+    public static final MongoClientSettings settings = MongoClientSettings.builder().codecRegistry(pojoCodecRegistry).build();
 
-    public MongoClient mongoClient = MongoClients.create(settings);
+    public static final MongoClient mongoClient = MongoClients.create(settings);
 
-    public MongoDatabase db = mongoClient.getDatabase("Prova05");
+    public static final MongoDatabase db = mongoClient.getDatabase("Prova05");
 
-    public MongoCollection<Document> collection = db.getCollection("Empresa");
+    public static final MongoCollection<Document> collection = db.getCollection("Empresa");
 
 }

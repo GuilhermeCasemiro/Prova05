@@ -1,8 +1,5 @@
 package br.com.contmatic.empresa.model.easy.random.empresa;
 
-import static br.com.contmatic.empresa.model.easy.random.endereco.EnderecoRandom.gerarEndereco;
-import static br.com.contmatic.empresa.model.easy.random.funcionario.ContatoRandom.gerarContato;
-import static br.com.contmatic.empresa.model.easy.random.funcionario.FuncionarioRandom.gerarFuncionario;
 import static org.jeasy.random.FieldPredicates.inClass;
 import static org.jeasy.random.FieldPredicates.named;
 import static org.jeasy.random.FieldPredicates.ofType;
@@ -22,7 +19,10 @@ import br.com.contmatic.empresa.model.Endereco;
 import br.com.contmatic.empresa.model.Estado;
 import br.com.contmatic.empresa.model.Funcionario;
 import br.com.contmatic.empresa.model.easy.random.cidade.CidadeRandom;
+import br.com.contmatic.empresa.model.easy.random.endereco.EnderecoRandom;
 import br.com.contmatic.empresa.model.easy.random.estado.EstadoRandom;
+import br.com.contmatic.empresa.model.easy.random.funcionario.ContatoRandom;
+import br.com.contmatic.empresa.model.easy.random.funcionario.FuncionarioRandom;
 
 public class EmpresaRandom implements Randomizer<Empresa> {
 
@@ -47,35 +47,11 @@ public class EmpresaRandom implements Randomizer<Empresa> {
         return easyRandom.nextObject(Empresa.class);
     }
 
-    static Randomizer<Funcionario> funcionarioRandomizer = new Randomizer<Funcionario>() {
+    static Randomizer<Funcionario> funcionarioRandomizer = FuncionarioRandom::gerarFuncionario;
 
-        @Override
-        public Funcionario getRandomValue() {
+    static Randomizer<Contato> contatoRandomizer = ContatoRandom::gerarContato;
 
-            return gerarFuncionario();
-        }
-
-    };
-
-    static Randomizer<Contato> contatoRandomizer = new Randomizer<Contato>() {
-
-        @Override
-        public Contato getRandomValue() {
-
-            return gerarContato();
-        }
-
-    };
-
-    static Randomizer<Endereco> enderecoRandomizer = new Randomizer<Endereco>() {
-
-        @Override
-        public Endereco getRandomValue() {
-
-            return gerarEndereco();
-        }
-
-    };
+    static Randomizer<Endereco> enderecoRandomizer = EnderecoRandom::gerarEndereco;
 
     @Override
     public Empresa getRandomValue() {
